@@ -1,0 +1,37 @@
+---
+import documento from '../content/portfolio-original.html?raw';
+import '../styles/certificados.css';
+import '../styles/proceso-formostock.css';
+import '../styles/contacto.css';
+
+const cuerpoCompleto = documento.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1] ?? '';
+const endpointFormspree = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT ?? '';
+const cuerpo = cuerpoCompleto
+  .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+  .replace('__FORMSPREE_ENDPOINT__', endpointFormspree);
+const estilos = [...documento.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map((coincidencia) => coincidencia[1]);
+const scripts = [...cuerpoCompleto.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map((coincidencia) => coincidencia[1]);
+---
+{estilos.map((estilo) => <style is:inline set:html={estilo}></style>)}
+<style is:inline>
+  .repositorios-carrusel{scroll-snap-type:none}
+  .repositorios-controles{justify-content:center;margin-inline:auto}
+  .repositorios-flecha{width:38px;height:38px;border-radius:10px;border-color:#454a55;background:#262a31;color:#f1f0ed;font-size:17px}
+  .repositorios-flecha:not(:disabled):hover{background:#343943;transform:translateY(-1px)}
+  .repositorios-nota,#repositorios-contador,.repositorios-flecha,.repositorios-pie{display:none}
+  .repositorios-barra{justify-content:center;margin:8px 0}
+  .seccion{padding-block:clamp(1.8rem,3vw,3.25rem)}
+  @media(max-width:760px){.seccion{padding-block:1.8rem}}
+</style>
+<Fragment set:html={cuerpo} />
+<script src="../scripts/portfolio-original.js"></script>
+{scripts.map((script) => <script is:inline set:html={script}></script>)}
+<script src="../scripts/proyectos-enriquecidos.ts"></script>
+<script src="../scripts/tecnologias-automaticas.ts"></script>
+<script src="../scripts/filtros-tecnologias.ts"></script>
+<script src="../scripts/redes-flotantes.ts"></script>
+<script src="../scripts/stack-automatico.ts"></script>
+<script src="../scripts/repositorios-automatico.ts"></script>
+<script src="../scripts/historia-paginada.ts"></script>
+<script src="../scripts/certificados-carrusel.ts"></script>
+<script src="../scripts/contacto-formulario.ts"></script>

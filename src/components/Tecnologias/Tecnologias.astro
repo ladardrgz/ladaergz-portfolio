@@ -1,0 +1,4 @@
+---
+import { gruposTecnologias } from '../../data/tecnologias'; import IconoTecnologia from '../ui/IconoTecnologia.astro'; import './Tecnologias.css';
+---
+<section class="seccion" id="tecnologias" aria-labelledby="titulo-tecnologias"><div class="contenedor"><p class="etiqueta">Tecnologías y herramientas</p><h2 class="titulo-seccion" id="titulo-tecnologias">Lo que fui aprendiendo, haciendo y conectando.</h2><p class="intro">No todas las herramientas cumplen el mismo rol. Esta es una mirada rápida a las tecnologías que aparecen en mi recorrido y en mis proyectos.</p><div class="pilas">{gruposTecnologias.map(grupo=><article><header><h3>{grupo.nombre}</h3><p>{grupo.descripcion}</p></header><div class="flashcards" tabindex="0" aria-label={`Tecnologías de ${grupo.nombre}`}>{grupo.items.map(item=><div class="flashcard"><IconoTecnologia nombre={item.icono as never} color={item.color}/><span>{item.nombre}</span></div>)}</div></article>)}</div></div></section>

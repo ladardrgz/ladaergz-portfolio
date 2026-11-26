@@ -1,0 +1,256 @@
+/* Tarjetas de certificados uniformes y navegadas sólo con flechas. */
+/* Carpeta de formación: contiene visualmente las constancias sin usar controles sociales. */
+.formacion-panel {
+  grid-column: 1 / -1;
+  position: relative;
+  min-width: 0;
+  margin-top: 8px;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border: 1px solid #3d424c;
+  border-radius: 0 20px 20px;
+  background: linear-gradient(145deg, #22262d, #17191e 72%);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, .22);
+}
+
+.formacion-panel::before {
+  position: absolute;
+  top: -30px;
+  left: -1px;
+  width: min(310px, 48%);
+  height: 32px;
+  border: 1px solid #3d424c;
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+  background: #2b3038;
+  content: "FORMACIÓN DOCUMENTADA";
+  color: #d8dbe0;
+  font: 800 10px/32px var(--fuente-texto);
+  letter-spacing: .12em;
+  text-align: center;
+}
+
+.formacion-certificados-cabecera { margin-bottom: 18px; }
+.formacion-certificados-cabecera .formacion-etiqueta { display: none; }
+
+.certificados-carrusel {
+  min-width: 0;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.formacion-certificados {
+  display: flex;
+  gap: 12px;
+  min-height: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.certificado-card,
+.certificado-card--destacado,
+.certificado-card:nth-child(n) {
+  position: relative;
+  inset: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 300px auto;
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+  height: 548px;
+  min-height: 548px;
+  margin: 0;
+  overflow: hidden;
+  transform: none;
+  scroll-snap-align: start;
+}
+
+.certificado-card .certificado-visual,
+.certificado-card .certificado-visual img,
+.certificado-card--destacado .certificado-visual,
+.certificado-card--destacado .certificado-visual img {
+  min-height: 300px;
+  height: 300px;
+  object-fit: contain;
+  object-position: center;
+  background: #f0f1f1;
+}
+
+.certificado-card .certificado-contenido,
+.certificado-card--destacado .certificado-contenido { gap: 7px; padding: 18px; }
+.certificado-card .certificado-contenido h3,
+.certificado-card--destacado .certificado-contenido h3 { font-size: clamp(1.05rem, .92rem + .42vw, 1.35rem); }
+.certificado-card .certificado-contenido p { font-size: .84rem; line-height: 1.45; }
+
+.certificados-controles { display: flex; justify-content: center; gap: 9px; margin-top: 10px; }
+
+.certificados-flecha {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #4a4f59;
+  border-radius: 9px;
+  background: #262a31;
+  color: var(--texto);
+  font: 700 18px/1 var(--fuente-texto);
+  cursor: pointer;
+  transition: background .2s var(--movimiento-suave), transform .2s var(--movimiento-suave);
+}
+
+.certificados-flecha:hover { background: #363b45; transform: translateY(-1px); }
+.certificados-flecha:focus-visible { outline: 2px solid var(--texto); outline-offset: 3px; }
+
+@media (max-width: 760px) {
+  .formacion-certificados { gap: 10px; }
+  .certificado-card,
+  .certificado-card--destacado,
+  .certificado-card:nth-child(n) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 190px auto;
+    flex-basis: 100%;
+    min-width: 100%;
+    height: auto;
+    min-height: 410px;
+  }
+  .certificado-card .certificado-visual,
+  .certificado-card .certificado-visual img,
+  .certificado-card--destacado .certificado-visual,
+  .certificado-card--destacado .certificado-visual img { min-height: 190px; height: 190px; }
+  .certificado-card .certificado-contenido,
+  .certificado-card--destacado .certificado-contenido { padding: 14px; }
+  .certificado-card .certificado-contenido p { font-size: .8rem; }
+  .certificado-ampliar { opacity: 1; transform: none; }
+}
+
+/* La carpeta contiene el relato de formación y el certificado como una sola composición. */
+.formacion-columnas {
+  position: relative;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5.5rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border: 1px solid #3d424c;
+  border-radius: 0 20px 20px;
+  background: linear-gradient(145deg, #22262d, #17191e 72%);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, .22);
+}
+
+.formacion-columnas::before {
+  position: absolute;
+  top: -30px;
+  left: -1px;
+  width: min(310px, 48%);
+  height: 32px;
+  border: 1px solid #3d424c;
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+  background: #2b3038;
+  content: "FORMACIÓN DOCUMENTADA";
+  color: #d8dbe0;
+  font: 800 10px/32px var(--fuente-texto);
+  letter-spacing: .12em;
+  text-align: center;
+}
+
+.formacion-panel {
+  grid-column: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.formacion-panel::before { display: none; }
+.formacion-certificados-cabecera { margin-bottom: 12px; }
+.formacion-certificados-cabecera .formacion-etiqueta { display: none; }
+.formacion-certificados-cabecera { text-align: center; }
+.formacion-certificados-cabecera h3 {
+  margin: 0 0 6px;
+  color: var(--texto);
+  font: 800 clamp(.72rem, .67rem + .17vw, .85rem)/1.2 var(--fuente-texto);
+  letter-spacing: .12em;
+}
+.formacion-certificados-cabecera p { max-width: 32rem; margin-inline: auto; }
+.certificados-carrusel { max-width: 430px; }
+
+.certificado-card,
+.certificado-card--destacado,
+.certificado-card:nth-child(n) {
+  grid-template-rows: 170px auto;
+  height: 345px;
+  min-height: 345px;
+  border-radius: 10px;
+}
+
+.certificado-card .certificado-visual,
+.certificado-card .certificado-visual img,
+.certificado-card--destacado .certificado-visual,
+.certificado-card--destacado .certificado-visual img {
+  min-height: 170px;
+  height: 170px;
+}
+
+.certificado-card .certificado-contenido,
+.certificado-card--destacado .certificado-contenido { gap: 5px; padding: 13px 15px; }
+.certificado-card .certificado-contenido h3,
+.certificado-card--destacado .certificado-contenido h3 { font-size: 1rem; line-height: 1.2; }
+.certificado-card .certificado-contenido p { font-size: .76rem; line-height: 1.4; }
+.certificado-card .certificado-nota { font-size: .72rem; line-height: 1.35; }
+.certificados-controles { margin-top: 8px; }
+
+#formacion { padding-bottom: clamp(3.5rem, 6vw, 6rem); }
+
+@media (max-width: 760px) {
+  .formacion-columnas {
+    gap: 1.75rem;
+    margin: 1.5rem 0 2.75rem;
+    padding: 1.65rem 1rem 1rem;
+    border-radius: 0 14px 14px;
+  }
+
+  .formacion-columnas::before {
+    top: -24px;
+    width: min(235px, 70%);
+    height: 25px;
+    border-radius: 11px 11px 0 0;
+    font-size: 8px;
+    line-height: 25px;
+  }
+
+  .certificados-carrusel { max-width: none; }
+  .certificado-card,
+  .certificado-card--destacado,
+  .certificado-card:nth-child(n) {
+    grid-template-rows: 175px auto;
+    min-height: 390px;
+  }
+  .certificado-card .certificado-visual,
+  .certificado-card .certificado-visual img,
+  .certificado-card--destacado .certificado-visual,
+  .certificado-card--destacado .certificado-visual img { min-height: 175px; height: 175px; }
+}
+
+@media (max-width: 760px) {
+  .formacion-panel {
+    margin-top: 20px;
+    padding: 1.65rem 1rem 1rem;
+    border-radius: 0 14px 14px;
+  }
+
+  .formacion-panel::before {
+    top: -24px;
+    height: 25px;
+    width: min(235px, 70%);
+    border-radius: 11px 11px 0 0;
+    font-size: 8px;
+    line-height: 25px;
+  }
+}

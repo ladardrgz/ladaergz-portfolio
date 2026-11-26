@@ -1,0 +1,17 @@
+---
+import './Footer.css';
+
+const prefix = Astro.url.pathname === '/' ? '' : '/';
+const year = new Date().getFullYear();
+const navegacion = [['Inicio', 'inicio'], ['Historia', 'sobre-mi'], ['Proyectos', 'proyectos'], ['Tecnologías', 'tecnologias'], ['Formación', 'formacion'], ['Contacto', 'contacto']] as const;
+---
+
+<footer class="footer-sitio" aria-label="Información institucional">
+  <div class="footer-sitio__interior">
+    <section class="footer-sitio__identidad" aria-labelledby="footer-nombre"><p class="footer-sitio__marca">L / R</p><h2 id="footer-nombre">Lada Elizabet Rodriguez</h2><p class="footer-sitio__rol">Software Developer <span aria-hidden="true">|</span> Web Applications</p><p class="footer-sitio__descripcion">Desarrollo de aplicaciones web, sistemas de gestión y soluciones digitales.</p><p class="footer-sitio__ubicacion">Formosa Capital, Argentina.</p></section>
+    <nav class="footer-sitio__grupo" aria-label="Navegación del pie"><h2>Recorrido</h2><ul>{navegacion.map(([texto,id]) => <li><a href={`${prefix}#${id}`}>{texto}</a></li>)}</ul></nav>
+    <section class="footer-sitio__grupo" aria-labelledby="footer-contacto"><h2 id="footer-contacto">Contacto profesional</h2><ul><li><a href="mailto:ladaergz.dev@gmail.com?subject=Contacto%20desde%20el%20portfolio">ladaergz.dev@gmail.com</a></li><li><a href="tel:+5493704663477">+54 9 370 466-3477</a></li><li><a href="https://github.com/ladardrgz" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></li><li><a href="https://www.instagram.com/ladaergz/" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a></li></ul></section>
+    <section class="footer-sitio__grupo" aria-labelledby="footer-legal"><h2 id="footer-legal">Información</h2><ul><li><a href="/privacidad">Política de privacidad</a></li><li><a href="/privacidad#cookies">Información sobre cookies</a></li></ul><p class="footer-sitio__nota">El sitio presenta trabajos y recibe consultas; no ofrece contratación ni pagos en línea.</p></section>
+  </div>
+  <div class="footer-sitio__base"><p>© {year} Lada Elizabet Rodriguez.</p><a href={`${prefix}#inicio`}>Volver arriba <span aria-hidden="true">↑</span></a></div>
+</footer>

@@ -1,0 +1,1 @@
+.formacion{display:grid;grid-template-columns:1fr 1fr;gap:3rem}.formacion article{padding:1.5rem 0;border-top:1px solid var(--borde)}.formacion article h3{margin-bottom:.5rem;font-size:1.2rem}.formacion article p:not(.etiqueta),.formacion small{color:var(--texto-secundario)}@media(max-width:700px){.formacion{grid-template-columns:1fr}}

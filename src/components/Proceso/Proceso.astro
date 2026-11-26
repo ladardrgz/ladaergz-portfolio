@@ -1,0 +1,5 @@
+---
+import './Proceso.css';
+const pasos=[['01','Analizar','Entender la necesidad, las personas involucradas y la información que necesita el sistema.'],['02','Diseñar','Ordenar flujos, estados, datos y decisiones antes de llevarlos a una pantalla.'],['03','Implementar','Construir en partes pequeñas, con responsabilidades claras y espacio para ajustar.'],['04','Validar','Probar escenarios reales, errores y casos que suelen aparecer cuando alguien lo usa.']];
+---
+<section class="seccion proceso" id="proceso" aria-labelledby="titulo-proceso"><div class="contenedor"><p class="etiqueta">Mi forma de trabajar</p><div class="proceso__encabezado"><h2 class="titulo-seccion" id="titulo-proceso">Primero entender. Después construir.</h2><p class="intro">No hay una solución útil sin una pregunta bien entendida. Este es el recorrido que intento sostener en cada proyecto.</p></div><ol>{pasos.map(([numero,titulo,texto])=><li><span>{numero}</span><div><h3>{titulo}</h3><p>{texto}</p></div></li>)}</ol></div></section>

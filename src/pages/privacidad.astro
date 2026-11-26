@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalHeader from '../components/LegalHeader.astro';
+import '../styles/privacidad.css';
+---
+
+<BaseLayout title="Política de privacidad | Lada Elizabet Rodriguez" description="Información sobre el tratamiento de datos del formulario de contacto del portfolio de Lada Elizabet Rodriguez.">
+  <LegalHeader />
+  <main class="privacidad">
+    <article class="privacidad__interior">
+      <header class="privacidad__encabezado"><p class="privacidad__etiqueta">INFORMACIÓN / PRIVACIDAD</p><h1>Datos para conversar, no para perfilar.</h1><p class="privacidad__resumen">Esta política explica qué sucede cuando usás el formulario de contacto de este portfolio. Está redactada para el funcionamiento actual del sitio y no sustituye asesoramiento legal.</p></header>
+      <p class="privacidad__aviso">El formulario es opcional. Si preferís no enviar datos mediante Formspree, podés escribir directamente a <a href="mailto:ladaergz.dev@gmail.com">ladaergz.dev@gmail.com</a>.</p>
+      <div class="privacidad__grilla">
+        <section class="privacidad__bloque"><h2>Responsable y contacto</h2><p><strong>Lada Elizabet Rodriguez</strong>, Software Developer | Web Applications, con referencia profesional en Formosa Capital, Argentina.</p><p>Consultas sobre privacidad: <a href="mailto:ladaergz.dev@gmail.com?subject=Consulta%20de%20privacidad">ladaergz.dev@gmail.com</a> o <a href="tel:+5493704663477">+54 9 370 466-3477</a>.</p></section>
+        <section class="privacidad__bloque"><h2>Datos y finalidad</h2><p>El formulario solicita nombre, correo electrónico y mensaje. Se utilizan únicamente para leer, responder y dar seguimiento a una consulta laboral o de colaboración iniciada por la persona visitante.</p><p>No se solicitan datos sensibles, documentos de identidad ni información de pago. No se usa el formulario para newsletter o marketing automatizado.</p></section>
+        <section class="privacidad__bloque"><h2>Base informada y registro</h2><p>Antes de enviar, la persona debe leer esta política y confirmar una casilla. El envío incorpora la versión del aviso y la confirmación al registro de Formspree. La adecuación definitiva de esa base al caso concreto debe revisarse con asesoramiento jurídico local.</p></section>
+        <section class="privacidad__bloque"><h2>Destinatarios y transferencias</h2><p>Los envíos se procesan mediante Formspree y se dirigen al correo indicado por la responsable. Formspree informa que opera sobre infraestructura de AWS en Estados Unidos; esto puede implicar una transferencia internacional. También se cargan tipografías y algunos íconos desde proveedores externos; esas solicitudes pueden recibir datos técnicos como la dirección IP.</p><p>Antes del despliegue público debe confirmarse el proveedor de hosting y sus condiciones de tratamiento.</p></section>
+        <section class="privacidad__bloque" id="cookies"><h2>Cookies y almacenamiento</h2><p>No se detectó analítica, publicidad, píxeles comerciales ni cookies propias en el código revisado. El sitio usa <code>sessionStorage</code> para conservar temporalmente información de lenguajes de repositorios durante la sesión; no identifica a la persona ni persiste al cerrar la pestaña. Por ello no se incorpora un banner de cookies.</p></section>
+        <section class="privacidad__bloque"><h2>Conservación y seguridad</h2><p>No hay una regla de borrado automático configurada en el sitio. Los mensajes pueden permanecer en Formspree y en el correo receptor según la configuración de esas cuentas. Se atenderán solicitudes de supresión; la responsable debe revisar periódicamente los mensajes y la configuración de retención del proveedor.</p><p>El sitio está diseñado para utilizar HTTPS en producción. La revisión de la configuración real del dominio, las restricciones de origen de Formspree y los accesos de la cuenta debe realizarse antes de publicar.</p></section>
+        <section class="privacidad__bloque privacidad__bloque--ancho"><h2>Tus derechos</h2><p>Podés solicitar acceso, rectificación, actualización o supresión de tus datos escribiendo al correo de privacidad. La <a href="https://www.argentina.gob.ar/aaip/datospersonales/derechos" target="_blank" rel="noopener noreferrer">AAIP</a> informa los derechos y vías de reclamo previstos por la Ley 25.326. Esta política no limita otros derechos que pudieran corresponderte.</p></section>
+      </div>
+      <p class="privacidad__actualizacion">Última revisión técnica: 25 de noviembre de 2026. La información debe revisarse cuando cambien proveedores, hosting, finalidades o normativa aplicable.</p>
+    </article>
+  </main>
+</BaseLayout>

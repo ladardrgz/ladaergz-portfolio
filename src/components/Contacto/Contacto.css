@@ -1,0 +1,1 @@
+.contacto{padding-block:var(--espacio);background:var(--superficie)}.contacto h2{max-width:14ch;margin:.5rem 0 1rem;font-size:clamp(2.7rem,6vw,5.8rem);line-height:.94;letter-spacing:-.065em}.contacto p:not(.etiqueta){max-width:40rem;color:var(--texto-secundario)}.contacto div div{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}

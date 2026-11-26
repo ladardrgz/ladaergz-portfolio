@@ -1,0 +1,8 @@
+---
+import '../styles/portfolio-original.css';
+import '../styles/palette.css';
+import Footer from '../components/Footer/Footer.astro';
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+---
+<!doctype html><html lang="es-AR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#17191e"/><meta name="description" content={description}/><meta name="author" content="Lada Elizabet Rodriguez"/><meta property="og:type" content="website"/><meta property="og:locale" content="es_AR"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><link rel="icon" href="/assets/icons/favicon-maletin.png" type="image/png"/><title>{title}</title></head><body><slot /><Footer /></body></html>
