@@ -1,6 +1,9 @@
 const carruselRepositorios = document.getElementById('carrusel-repositorios');
 
 if (carruselRepositorios) {
+  const puedeUsarAutoplay = window.matchMedia(
+    '(hover: hover) and (pointer: fine)'
+  );
   let ultimoCuadro = performance.now();
   let posicion = carruselRepositorios.scrollLeft;
   let direccion = 1;
@@ -12,7 +15,12 @@ if (carruselRepositorios) {
     const transcurrido = Math.min(ahora - ultimoCuadro, 48);
     ultimoCuadro = ahora;
 
-    if (!pausadoPorUsuario && ahora >= reanudarEn && !document.hidden) {
+    if (
+      puedeUsarAutoplay.matches &&
+      !pausadoPorUsuario &&
+      ahora >= reanudarEn &&
+      !document.hidden
+    ) {
       const limite = carruselRepositorios.scrollWidth - carruselRepositorios.clientWidth;
 
       if (limite > 0) {
@@ -39,6 +47,25 @@ if (carruselRepositorios) {
   };
 
   requestAnimationFrame(animar);
+
+  const respetarDesplazamientoManual = () => {
+    posicion = carruselRepositorios.scrollLeft;
+    reanudarEn = performance.now() + 2200;
+  };
+
+  carruselRepositorios.addEventListener(
+    'scroll',
+    respetarDesplazamientoManual,
+    { passive: true }
+  );
+
+  carruselRepositorios.addEventListener(
+    'pointerdown',
+    () => {
+      reanudarEn = performance.now() + 4000;
+    },
+    { passive: true }
+  );
 
   const botonPausa = document.getElementById('repositorios-pausa');
   botonPausa?.addEventListener('click', () => {

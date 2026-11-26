@@ -2,6 +2,9 @@ const carruselStack = document.querySelector<HTMLElement>('.portada-tecnologias-
 const movimientoReducido = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 if (carruselStack && !movimientoReducido.matches) {
+  const puedeUsarAutoplay = window.matchMedia(
+    '(hover: hover) and (pointer: fine)'
+  );
   let ultimoCuadro = performance.now();
   let pausado = false;
   let reanudarEn = 0;
@@ -20,7 +23,7 @@ if (carruselStack && !movimientoReducido.matches) {
     const transcurrido = Math.min(ahora - ultimoCuadro, 48);
     ultimoCuadro = ahora;
 
-    if (!pausado && ahora >= reanudarEn) {
+    if (puedeUsarAutoplay.matches && !pausado && ahora >= reanudarEn) {
       const limite = carruselStack.scrollWidth - carruselStack.clientWidth;
 
       if (limite > 0) {
@@ -36,11 +39,8 @@ if (carruselStack && !movimientoReducido.matches) {
   carruselStack.addEventListener('mouseleave', programarReanudacion);
   carruselStack.addEventListener('focusin', pausar);
   carruselStack.addEventListener('focusout', programarReanudacion);
-  carruselStack.addEventListener('touchstart', pausar, { passive: true });
-  carruselStack.addEventListener('touchend', programarReanudacion, { passive: true });
-  carruselStack.addEventListener('scroll', () => {
-    if (document.activeElement === carruselStack) programarReanudacion();
-  }, { passive: true });
+  carruselStack.addEventListener('pointerdown', pausar, { passive: true });
+  carruselStack.addEventListener('pointerup', programarReanudacion, { passive: true });
 
   requestAnimationFrame(animar);
 }

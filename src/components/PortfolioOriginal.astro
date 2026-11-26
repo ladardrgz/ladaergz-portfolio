@@ -22,6 +22,59 @@ const scripts = [...cuerpoCompleto.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>
   .repositorios-barra{justify-content:center;margin:8px 0}
   .seccion{padding-block:clamp(1.8rem,3vw,3.25rem)}
   @media(max-width:760px){.seccion{padding-block:1.8rem}}
+
+  @media (max-width: 850px) {
+    html.menu-movil-abierto,
+    html.menu-movil-abierto body { overflow: hidden; }
+
+    .cabecera { top: max(8px, env(safe-area-inset-top)); }
+    .cabecera-contenido { position: relative; min-height: 56px; height: auto; padding: 8px 12px 8px 16px; gap: 8px; }
+    .marca { min-width: 0; }
+    .marca-simbolo { font-size: 11px; white-space: nowrap; }
+    .marca-descripcion,
+    .cabecera-contacto { display: none; }
+    .menu-boton { display: flex; flex: 0 0 40px; width: 40px; height: 40px; margin-left: auto; border-radius: 10px; background: #24272e; }
+    .navegacion { display: none; position: absolute; z-index: 60; top: calc(100% + 8px); right: 0; left: 0; max-width: none; margin: 0; padding: 8px; overflow: visible; border: 1px solid #3d424c; border-radius: 14px; background: rgba(20, 22, 27, .98); box-shadow: 0 18px 34px rgba(0, 0, 0, .35); backdrop-filter: blur(14px); }
+    .navegacion.abierto { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 4px; }
+    .navegacion-enlace { display: flex; align-items: center; justify-content: center; min-height: 42px; padding: 8px; border-radius: 9px; font-size: 12px; white-space: nowrap; }
+    .navegacion-enlace:last-child { grid-column: span 2; }
+    .navegacion-enlace:hover { transform: none; box-shadow: none; }
+    .navegacion-enlace::after { display: none; }
+
+    .portada-columnas { grid-template-columns: minmax(0, 1fr); }
+    .portada-textos,
+    .portada-resumen,
+    .portada-tecnologias,
+    .portada-formacion { width: min(100%, 610px); min-width: 0; }
+
+    .seccion-cabecera { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .seccion-cabecera > p { width: min(100%, 430px); max-width: none; margin: 0; }
+
+    .repositorios-carrusel { scroll-snap-type: x proximity; scroll-padding-inline: 8px; touch-action: pan-x pan-y; }
+    .portada-tecnologias-carrusel,
+    .tecnologias-ventana { overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; touch-action: pan-x pan-y; -webkit-overflow-scrolling: touch; }
+    .tecnologias-pista-animada { animation: none; transform: none; }
+    .tecnologia-proyecto,
+    .portada-tecnologia { scroll-snap-align: start; }
+    .repositorios-flecha,
+    .tecnologias-flecha { flex: 0 0 auto; aspect-ratio: 1; }
+  }
+
+  @media (max-width: 380px) {
+    .cabecera-contenido { padding-inline: 12px; }
+    .marca-simbolo { font-size: 10px; }
+    .navegacion.abierto { grid-template-columns: 1fr; }
+    .navegacion-enlace:last-child { grid-column: auto; }
+  }
+
+  @media (max-width: 760px) {
+    .redes-flotantes {
+      top: auto;
+      bottom: max(16px, env(safe-area-inset-bottom));
+      left: 0;
+      transform: none;
+    }
+  }
 </style>
 <Fragment set:html={cuerpo} />
 <script src="../scripts/portfolio-original.js"></script>

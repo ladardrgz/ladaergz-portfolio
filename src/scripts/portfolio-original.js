@@ -118,6 +118,26 @@
   // 4. MENÚ DE NAVEGACIÓN PARA CELULARES
   // ===================================================
 
+  const consultaMenuMovil = window.matchMedia('(max-width: 850px)');
+
+  function actualizarEstadoAccesibleMenu(estaAbierto) {
+
+    if (!navegacion) return;
+
+    const esMenuMovil = consultaMenuMovil.matches;
+
+    navegacion.setAttribute(
+      'aria-hidden',
+      String(esMenuMovil && !estaAbierto)
+    );
+
+    document.documentElement.classList.toggle(
+      'menu-movil-abierto',
+      esMenuMovil && estaAbierto
+    );
+
+  }
+
   function cerrarMenu(devolverFoco = false) {
 
     if (!botonMenu || !navegacion) return;
@@ -136,6 +156,8 @@
       'aria-label',
       'Abrir menú'
     );
+
+    actualizarEstadoAccesibleMenu(false);
 
     if (devolverFoco && estabaAbierto) {
       botonMenu.focus();
@@ -166,6 +188,8 @@
         'aria-label',
         debeAbrirse ? 'Cerrar menú' : 'Abrir menú'
       );
+
+      actualizarEstadoAccesibleMenu(debeAbrirse);
 
     });
 
@@ -204,13 +228,14 @@
 
     // Cerrar al regresar al diseño de escritorio.
 
-    window.addEventListener('resize', () => {
+    const sincronizarMenuConViewport = () => cerrarMenu();
 
-      if (window.innerWidth > 850) {
-        cerrarMenu();
-      }
+    consultaMenuMovil.addEventListener(
+      'change',
+      sincronizarMenuConViewport
+    );
 
-    });
+    actualizarEstadoAccesibleMenu(false);
 
   }
 
